@@ -1,0 +1,32 @@
+# Build output
+dist
+build
+
+# Dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Cache directories
+.cache
+.vite
+
+# Environment files
+.env*
+
+# Package files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Coverage directory
+coverage
+
+# PWA assets
+public
+
+# Auto-generated files
+*.min.js
+*.min.css
