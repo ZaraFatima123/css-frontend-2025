@@ -7,30 +7,39 @@ import MobileNav from "./components/MobileNav";
 import DesktopNav from "./components/DesktopNav";
 import Homepage from "./pages/Homepage";
 import AccountSettings from "./pages/AccountSettings";
-import LeetcodeCommunity from "./pages/LeetcodeDashboard";
 import StudentPortfolios from "./pages/StudentPortfolios";
 import { ThemeProvider } from "./components/theme-provider";
+import Notices from "./pages/Notices";
+import Classroom from "./pages/Classroom";
+import Chat from "./pages/Chat";
+import ChatRoom from "./pages/ChatRoom";
+import ChatWelcome from "./pages/ChatWelcome";
 const queryClient = new QueryClient();
 
 const App = () => (
   <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <div className="min-h-screen bg-background text-foreground antialiased">
-            <DesktopNav />
-            <MobileNav />
-            <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/leetcode-community" element={<LeetcodeCommunity />} />
-              <Route path="/student-portfolios" element={<StudentPortfolios />} />
-              <Route path="/account-settings" element={<AccountSettings />} />
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </TooltipProvider>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <div className="min-h-screen bg-background">
+          <DesktopNav />
+          <MobileNav />
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/chat" element={<Chat />}>
+              <Route index element={<ChatWelcome />} />
+              <Route path=":id" element={<ChatRoom />} />
+            </Route>
+            <Route path="/portfolios" element={<StudentPortfolios />} />
+            <Route path="/classroom" element={<Classroom />} />
+            <Route path="/notices" element={<Notices />} />
+            <Route path="/settings" element={<AccountSettings />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </TooltipProvider>
     </QueryClientProvider>
   </ThemeProvider>
 )

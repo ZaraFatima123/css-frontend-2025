@@ -1,4 +1,4 @@
-import { Home, Settings, Users, BookOpen } from "lucide-react";
+import { Home, School, BookOpen, Bell, MessageCircle, Settings } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "./mode-toggle";
@@ -8,13 +8,15 @@ const DesktopNav = () => {
   
   const navItems = [
     { icon: Home, label: "Home", path: "/" },
-    { icon: Settings, label: "Settings", path: "/account-settings" },
-    { icon: Users, label: "Community", path: "/leetcode-community" },
-    { icon: BookOpen, label: "Portfolios", path: "/student-portfolios" },
+    { icon: School, label: "Classroom", path: "/classroom" },
+    { icon: BookOpen, label: "Portfolios", path: "/portfolios" },
+    { icon: Bell, label: "Notices", path: "/notices" },
+    { icon: MessageCircle, label: "Chat", path: "/chat" },
+    { icon: Settings, label: "Settings", path: "/settings" },
   ];
 
   return (
-    <nav className="hidden md:block fixed top-0 left-0 right-0 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-[env(safe-area-inset-right)] px-[env(safe-area-inset-left)]">
+    <nav className="hidden md:block fixed top-0 left-0 right-0 bg-background border-b border-border z-50 pt-[env(safe-area-inset-top)] px-[env(safe-area-inset-right)] px-[env(safe-area-inset-left)]">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
