@@ -1,15 +1,46 @@
-import { ThemeProvider } from "@/components/theme-provider"
-import { ModeToggle } from "@/components/mode-toggle"
-function App() {
-  return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="container mx-auto p-4">
-        <h1 className="text-4xl font-bold mb-4">Welcome to My Website</h1>
-        <p className="text-lg">This is a sample content area using Tailwind CSS.</p>
-      <ModeToggle />
-      </div>
-    </ThemeProvider>
-  )
-}
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MobileNav from "./components/MobileNav";
+import DesktopNav from "./components/DesktopNav";
+import Homepage from "./pages/Homepage";
+import AccountSettings from "./pages/AccountSettings";
+import StudentPortfolios from "./pages/StudentPortfolios";
+import { ThemeProvider } from "./components/theme-provider";
+import Notices from "./pages/Notices";
+import Classroom from "./pages/Classroom";
+import Chat from "./pages/Chat";
+import ChatRoom from "./pages/ChatRoom";
+import ChatWelcome from "./pages/ChatWelcome";
+const queryClient = new QueryClient();
 
-export default App
+const App = () => (
+  <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <div className="min-h-screen bg-background">
+          <DesktopNav />
+          <MobileNav />
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/chat" element={<Chat />}>
+              <Route index element={<ChatWelcome />} />
+              <Route path=":id" element={<ChatRoom />} />
+            </Route>
+            <Route path="/portfolios" element={<StudentPortfolios />} />
+            <Route path="/classroom" element={<Classroom />} />
+            <Route path="/notices" element={<Notices />} />
+            <Route path="/settings" element={<AccountSettings />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </TooltipProvider>
+    </QueryClientProvider>
+  </ThemeProvider>
+)
+export default App;
