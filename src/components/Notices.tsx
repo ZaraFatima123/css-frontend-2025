@@ -9,28 +9,28 @@ const Notices = () => {
   const notices = [
     {
       id: 1,
-      title: "End Semester Results Declared",
+      title: "End Semester Results Declared!",
       description: "Results for Fall 2023 semester are now available",
       date: new Date("2024-04-15T10:00:00"),
       type: "result" as const,
     },
     {
       id: 2,
-      title: "Summer Break Announcement",
+      title: "Summer Break Announcement!",
       description: "Summer break will commence from May 15th to June 30th",
       date: new Date("2024-04-20T23:59:00"),
       type: "holiday" as const,
     },
     {
       id: 3,
-      title: "Campus Maintenance Notice",
+      title: "Campus Maintenance Notice!",
       description: "Library will be closed for renovation next week",
       date: new Date("2024-05-01T09:00:00"),
       type: "general" as const,
     },
     {
       id: 4,
-      title: "Scholarship Applications Open",
+      title: "Scholarship Applications Open!",
       description: "Merit scholarship applications for next semester are now open",
       date: new Date("2024-04-18T14:00:00"),
       type: "announcement" as const,
